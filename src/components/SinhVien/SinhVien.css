@@ -1,0 +1,50 @@
+.container {
+  border: 1px solid red;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.label-container {
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  display: inline-block;
+  width: 120px;
+}
+
+button {
+  background-color: red; 
+  color: white; 
+  border: none; 
+  padding: 8px 16px; 
+  margin-left: 5px;
+  display: inline-block;
+  cursor: pointer; 
+}
+
+.required {
+  color: red;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+thead tr {
+  background-color: red;
+  color: white;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
