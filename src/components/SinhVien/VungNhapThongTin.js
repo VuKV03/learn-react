@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function VungNhapThongTin(props) {
-  const { onReload } = props;
+  const { student, onReload } = props;
   const [data, setData] = useState({
     MaSV: "",
     TenSV: "",
@@ -22,6 +22,26 @@ function VungNhapThongTin(props) {
     };
     fetchApi();
   }, []);
+
+  useEffect(() => {
+    if (student) {
+      setData({
+        MaSV: student.MaSV,
+        TenSV: student.TenSV,
+        NgaySinh: student.NgaySinh,
+        GioiTinh: student.GioiTinh,
+        MaKhoa: student.MaKhoa,
+      });
+    } else {
+      setData({
+        MaSV: "",
+        TenSV: "",
+        NgaySinh: "",
+        GioiTinh: "",
+        MaKhoa: "",
+      });
+    }
+  }, [student]);
 
   const handleSubmitEdit = () => {
     const temp = document.getElementById("txtMaSV").value;
@@ -102,7 +122,6 @@ function VungNhapThongTin(props) {
         .then((result) => {
           onReload();
           console.log("Success:", result);
-          // Làm trống các ô nhập sau khi thêm mới
           setData({
             MaSV: "",
             TenSV: "",
@@ -182,6 +201,7 @@ function VungNhapThongTin(props) {
           name="GioiTinh"
           id="male"
           value="Nam"
+          checked={data.GioiTinh === "Nam"}
           onChange={handleChange}
         />
         <label htmlFor="male">Nam</label>
@@ -191,6 +211,7 @@ function VungNhapThongTin(props) {
           name="GioiTinh"
           id="female"
           value="Nữ"
+          checked={data.GioiTinh === "Nữ"}
           onChange={handleChange}
         />
         <label htmlFor="female">Nữ</label>
